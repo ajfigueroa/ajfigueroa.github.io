@@ -1,15 +1,13 @@
 ---
 layout: page
-title: About
-permalink: /about/
+title: About Me
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+My name is Alex Figueroa and I'm a Canadian Software Developer from Toronto, ON.
 
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jglovier" %} /
-[jekyll-new](https://github.com/jglovier/jekyll-new)
+I am currently working @ [Kinetic Cafe](http://kineticcafe.com/) and any opinions made here are completely my own (that should go without saying).
 
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+Outside of programming, I'm really into sketching, playing guitar, and taking photographs of food or the outdoors.
+I'll be adding more here as I build this through.
+
+Feel free to follow me on [Twitter](https://www.twitter.com/{{ site.twitter_username }}) or [Github](https://www.github.com/{{ site.github_username }}).
