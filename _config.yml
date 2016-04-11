@@ -15,6 +15,8 @@ paginate: 15
 baseurl: /
 domain_name: 'http://alexjfigueroa.com'
 google_analytics: 'UA-76173192-1'
+
+exclude: [vendor]
 gems: [jekyll-paginate]
 
 # Details for the RSS feed generator
