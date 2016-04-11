@@ -6,8 +6,8 @@ date:   2016-04-10 7:42:00
 
 If you're reading this, bravo!
 
-{% highlight objective-c %}
-NSLog(@"Hello, world");
+{% highlight swift %}
+print("Hello, world!")
 {% endhighlight %}
 
 I just finished setting up my theme and the outline for my first post so stay tuned!
