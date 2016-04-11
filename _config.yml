@@ -9,7 +9,7 @@
 name: Alex Figueroa
 description: A WIP collection of technical ramblings and photographs
 markdown: kramdown
-highlighter: pygments
+highlighter: rouge
 logo: false
 paginate: 15
 baseurl: /
