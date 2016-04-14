@@ -899,6 +899,11 @@ body:not(.post-template) .post-title {
     margin: 0 -13%;
 }
 
+.post-content img.profile-large {
+
+    border-radius: 50%;
+}
+
 /* The author credit area after the post */
 .post-footer {
     position: relative;

@@ -7,7 +7,7 @@
 
 # Site settings
 name: Alex Figueroa
-description: A WIP collection of technical ramblings and photographs
+description: A smorgasblog of technical ramblings and photographs
 markdown: kramdown
 highlighter: rouge
 logo: false

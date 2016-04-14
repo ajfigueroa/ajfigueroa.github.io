@@ -3,6 +3,10 @@ layout: page
 title: About Me
 ---
 
+{% if site.profile_image_url %}
+<img class="profile-large" src="{{ site.profile_image_url }}?size=150">
+{% endif %}
+
 My name is Alex Figueroa and I'm a Canadian Software Developer from Toronto, ON.
 
 I am currently working @ [Kinetic Cafe](http://kineticcafe.com/) and any opinions made here are completely my own (that should go without saying).
