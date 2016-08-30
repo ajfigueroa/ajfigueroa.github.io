@@ -11,3 +11,5 @@ print("Hello, world!")
 {% endhighlight %}
 
 I just finished setting up my theme and the outline for my first post so stay tuned!
+
+EDIT: I have not done any posts since this and yes, I feel bad 😑
