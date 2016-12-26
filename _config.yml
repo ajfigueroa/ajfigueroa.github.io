@@ -20,10 +20,11 @@ exclude: [vendor]
 gems: [jekyll-paginate]
 
 # Details for the RSS feed generator
-url:            'http://alexjfigueroa.com'
-author:         'Alex Figueroa'
+url: 'http://alexjfigueroa.com'
+author: 'Alex Figueroa'
 
 # User Settings
 profile_image_url: 'http://www.gravatar.com/avatar/ecbaec4f458de7172daff03e1f20e677'
 twitter_username: externconst
 github_username: ajfigueroa
+wattpad_usernaem: externvar
