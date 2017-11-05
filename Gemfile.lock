@@ -1,7 +1,11 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
     colorator (0.1)
+    faraday (0.13.1)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.10)
     jekyll (3.1.2)
       colorator (~> 0.1)
@@ -12,6 +16,8 @@ GEM
       mercenary (~> 0.3.3)
       rouge (~> 1.7)
       safe_yaml (~> 1.0)
+    jekyll-gist (1.4.1)
+      octokit (~> 4.2)
     jekyll-paginate (1.1.0)
     jekyll-sass-converter (1.4.0)
       sass (~> 3.4)
@@ -23,19 +29,33 @@ GEM
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9.7)
     mercenary (0.3.6)
+    multi_json (1.12.2)
+    multipart-post (2.0.0)
+    octokit (4.7.0)
+      sawyer (~> 0.8.0, >= 0.5.3)
+    public_suffix (3.0.0)
+    pygments.rb (1.2.0)
+      multi_json (>= 1.0.0)
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    redcarpet (3.4.0)
     rouge (1.10.1)
     safe_yaml (1.0.4)
     sass (3.4.22)
+    sawyer (0.8.1)
+      addressable (>= 2.3.5, < 2.6)
+      faraday (~> 0.8, < 1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   jekyll
+  jekyll-gist
   jekyll-paginate
+  pygments.rb
+  redcarpet
 
 BUNDLED WITH
-   1.10.6
+   1.13.1
