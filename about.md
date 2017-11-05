@@ -3,15 +3,14 @@ layout: page
 title: About Me
 ---
 
-{% if site.profile_image_url %}
-<img class="profile-large" src="{{ site.profile_image_url }}?size=150">
+{% if site.author.profile_image_url %}
+<img class="profile-large" src="{{ site.author.profile_image_url }}?size=150">
 {% endif %}
 
-My name is Alex Figueroa and I'm an iOS Developer from the far away land of Toronto, ON.
+My name is Alex and I'm an iOS Engineer from the far away land of Toronto, ON.
 
-I am currently working at Wattpad and any opinions made here are completely my own (but that should go without saying).
+I currently work at [Wattpad](https://www.wattpad.com) and any opinions made here are completely my own.
 
-Outside of programming, I'm really into reading, playing guitar, and taking photographs of food or the great outdoors.
+Outside of programming, I'm really into reading, playing guitar, and taking photographs of people or city landscapes.
 
-Feel free to follow me on [Twitter](https://www.twitter.com/{{ site.twitter_username }}), [Github](https://www.github.com/{{ site.github_username }}), 
-and now [Wattpad](https://www.wattpad.com/{{ site.wattpad_username }}).
+Check out my photographs on [500px](https://500px.com/{{site.author.500px_username}}) and feel free to follow me on [Twitter](https://www.twitter.com/{{ site.author.twitter_username }}). 

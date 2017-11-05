@@ -1,30 +1,22 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
-
-# Site settings
-name: Alex Figueroa
-description: A smorgasblog of technical ramblings and photographs
-markdown: kramdown
-highlighter: rouge
-logo: false
-paginate: 15
-baseurl: /
-domain_name: 'http://alexjfigueroa.com'
-google_analytics: 'UA-76173192-1'
-
+# Site Metadata
+title: "Alex Figueroa"
+tagline: "iOS Engineer"
+description: "A smorgasblog of technical ramblings and photographs"
+url: "http://alexjfigueroa.com"
+baseurl: "/"
+paginate: 5
 exclude: [vendor]
-gems: [jekyll-paginate]
+gems: [jekyll-paginate, jekyll-gist]
+markdown: redcarpet
+highlighter: pygments
+google_analytics: "UA-76173192-1"
 
-# Details for the RSS feed generator
-url: 'http://alexjfigueroa.com'
-author: 'Alex Figueroa'
+# Author
+author:
+  name: "Alex Figueroa"
+  profile_image_url: "http://www.gravatar.com/avatar/ecbaec4f458de7172daff03e1f20e677"
+  twitter_username: "externconst"
+  500px_username: "externvar"
 
-# User Settings
-profile_image_url: 'http://www.gravatar.com/avatar/ecbaec4f458de7172daff03e1f20e677'
-twitter_username: externconst
-github_username: ajfigueroa
-wattpad_username: alex
+# Permalinks
+permalink: pretty
