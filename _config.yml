@@ -8,7 +8,7 @@ paginate: 5
 exclude: [vendor]
 gems: [jekyll-paginate, jekyll-gist]
 markdown: redcarpet
-highlighter: pygments
+highlighter: rouge
 google_analytics: "UA-76173192-1"
 
 # Author
