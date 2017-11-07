@@ -1,0 +1,5 @@
+/* Overrides user agent style code blocks */
+.highlight {
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}

@@ -6,7 +6,7 @@ url: "http://alexjfigueroa.com"
 baseurl: "/"
 paginate: 5
 exclude: [vendor]
-gems: [jekyll-paginate, jekyll-gist]
+plugins: [jekyll-paginate]
 highlighter: rouge
 google_analytics: "UA-76173192-1"
 
@@ -15,7 +15,7 @@ author:
   name: "Alex Figueroa"
   profile_image_url: "http://www.gravatar.com/avatar/ecbaec4f458de7172daff03e1f20e677"
   twitter_username: "externconst"
-  500px_username: "externvar"
+  five_hundred_username: "externvar"
 
 # Permalinks
 permalink: pretty
