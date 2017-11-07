@@ -3,3 +3,23 @@
     -webkit-margin-start: 0px;
     -webkit-margin-end: 0px;
 }
+
+/* Overrides the font-family */
+html {
+    font-family: "Roboto-Condensed", Helvetica, Arial, sans-serif;
+}
+
+/* About section */
+.sidebar-about h1 {
+    font-family: "Roboto", serif;
+}
+
+/*
+ * Pagination
+ *
+ * Super lightweight (HTML-wise) blog pagination. `span`s are provide for when
+ * there are no more previous or next posts to show.
+ */
+ .pagination {
+    font-family: "Roboto-Condensed", Helvetica, Arial, sans-serif;
+  }
