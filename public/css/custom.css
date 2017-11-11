@@ -23,3 +23,16 @@ html {
  .pagination {
     font-family: "Roboto-Condensed", Helvetica, Arial, sans-serif;
   }
+
+/* Sidebar nav footer */
+.content-footer {
+    display: block;
+    line-height: 1.75;
+    font-size: 0.8rem;
+    max-width: 38rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
