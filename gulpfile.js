@@ -18,16 +18,12 @@ gulp.task(minifyCssTask, () => {
 
 // Runs Jekyll as a child process
 gulp.task(jekyllTask, () => {
-    const jekyll = child.spawn('jekyll', ['serve',
-      '--watch',
-      '--incremental',
-      '--drafts'
-    ]);
-  
+    const jekyll = child.spawn('bundle', ['exec', 'jekyll', 'serve']);
+
     const jekyllLogger = (buffer) => {
       buffer.toString()
         .split(/\n/)
-        .forEach((message) => gutil.log('Jekyll: ' + message));
+        .forEach((message) => gutil.log('jekyll: ' + message));
     };
   
     jekyll.stdout.on('data', jekyllLogger);
