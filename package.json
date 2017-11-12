@@ -1,0 +1,15 @@
+{
+  "name": "ajfigueroa.github.io",
+  "private": true,
+  "author": "Alex Figueroa",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ajfigueroa/ajfigueroa.github.io"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.9.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-util": "^3.0.8"
+  }
+}
