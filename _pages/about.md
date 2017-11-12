@@ -1,6 +1,7 @@
 ---
 layout: page
 title: About Me
+permalink: /about/
 ---
 
 {% if site.author.profile_image_url %}

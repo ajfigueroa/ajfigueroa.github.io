@@ -6,6 +6,7 @@ url: https://alexjfigueroa.com
 enforce_ssl: alexjfigueroa.com
 baseurl: /
 paginate: 5
+include: [_pages]
 exclude: [vendor]
 plugins: [jekyll-paginate]
 highlighter: rouge
