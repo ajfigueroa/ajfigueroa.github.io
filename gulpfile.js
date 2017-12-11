@@ -18,7 +18,7 @@ gulp.task(minifyCssTask, () => {
 
 // Runs Jekyll as a child process
 gulp.task(jekyllTask, () => {
-    const jekyll = child.spawn('bundle', ['exec', 'jekyll', 'serve']);
+    const jekyll = child.spawn('bundle', ['exec', 'jekyll', 'serve', '--drafts']);
 
     const jekyllLogger = (buffer) => {
       buffer.toString()
