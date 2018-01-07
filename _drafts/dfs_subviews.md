@@ -15,9 +15,10 @@ I believe that UIView's private function: `recursiveDescription` is an applicati
 
 ## Assumptions
 
-I'm going to assume you're a little bit familiar with how the [view hierarchy](https://developer.apple.com/library/content/documentation/General/Conceptual/Devpedia-CocoaApp/View%20Hierarchy.html) works in iOS.
-
-However, being familiar with Swift is not necessary but there are Swift only features that I'll do my best to explain.
+I'm going to assume you're familiar with:
+- how the [view hierarchy](https://developer.apple.com/library/content/documentation/General/Conceptual/Devpedia-CocoaApp/View%20Hierarchy.html) works in iOS; and
+- Swift but it's not necessary assuming you're familiar with another language
+    - There are some Swift only features that I'll do my best to explain.
 
 I'm going to walk through a brief recap on Graphs, Adjacency Lists, and DFS. Afterwards, I'll use this as the foundation for reverse engineering `recursiveDescription`.
 
@@ -29,20 +30,19 @@ Let's first look at the following graph:
 <img src="/assets/img/posts/20171210/directed_graph.png" width="50%" height="50%">
 
 This is a **directed** graph that consists of six (6) **vertices** and five (5) **edges**.
-- **Vertices** (a.k.a nodes or points) are the encircled data.
-    - Ex. The above graph has vertices: `A`, `B`, `C`. `D`, `E`, and `F`.
-- **Edges** (a.k.a. arcs or lines) are the lines that connect each vertex. 
-    - They can also have [weights](https://en.wikipedia.org/wiki/Glossary_of_graph_theory_terms#weight) associated with them.
-    - Ex. `A` has two edges associated with it: one to `B` and another to `C`.
+- **Vertices** (a.k.a nodes or points) are the encircled data
+    - Ex. The above graph has vertices: `A`, `B`, `C`, `D`, `E`, and `F`
+- **Edges** (a.k.a. arcs or lines) are the lines that connect each vertex
+    - They can also have [weights](https://en.wikipedia.org/wiki/Glossary_of_graph_theory_terms#weight) associated with them
+    - Ex. `A` has two edges associated with it: one to `B` and another to `C`
 - **Directed** refers to the [orientation](https://en.wikipedia.org/wiki/Orientation_(graph_theory)) of the graph 
     - This specifically refers to **how** edges connect each vertex
-    - A graph can either be [directed](https://en.wikipedia.org/wiki/Directed_graph) or [undirected](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Undirected_graph) (sometimes referred to as bidirectional).
-    - Ex. If we started at `A`, we could go to `B` or `C` but we could not do the reverse.
+    - A graph can either be [directed](https://en.wikipedia.org/wiki/Directed_graph) or [undirected](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Undirected_graph) (sometimes referred to as bidirectional)
+    - Ex. If we started at `A`, we could go to `B` or `C` but we could not do the reverse
 
 ## Adjacency Lists
 
-An [adjacency list](https://en.wikipedia.org/wiki/Adjacency_list) is a collection of neighbouring vertices relative
-to a given vertex. 
+An [adjacency list](https://en.wikipedia.org/wiki/Adjacency_list) is a collection of neighbouring vertices relative to a given vertex. 
 
 For the graph in Figure 1, We would say that vertex `B` and vertex `C` are adjacent to vertex `A`.
 
@@ -102,20 +102,21 @@ class Vertex<T> {
 {% endhighlight %}
 
 1. A generic class definition for the vertex
-    - The `T` denotes that this is generic and can be of any type (i.e. `Int`, `String`, etc).
+    - The `T` denotes that this is generic and can be of any type (i.e. `Int`, `String`, etc)
 2. The properties (or members) for the class
-    - `value`: the generic data belonging to this vertex.
-    - `visited`: the flag with an initial value of `false` to indicate if we've seen this node before.
-    - `adjacencyList`: the array that denotes its neighbours. This is one of the many ways to represent an adjacency list.
+    - `value`: the generic data belonging to this vertex
+    - `visited`: the flag with an initial value of `false` to indicate if we've seen this node before
+    - `adjacencyList`: the array that represents neighbouring vertices
+        - This is one of the many ways to represent an adjacency list
 3. The initialization (or constructor) function
-    - An example usage could look: `Vertex<Int>(value: 2)` or `Vertex<String>(value: "Alex")`.
+    - An example usage could look like: `Vertex<Int>(value: 2)` or `Vertex<String>(value: "Alex")`
 
 Using this model, there are three things to highlight with the following implementation of DFS:
-1. It's [recursive](https://en.wikipedia.org/wiki/Recursion_(computer_science)).
-2. We're not searching for anything here instead we're printing out a value each time a vertex is visited.
-3. It is possible for a vertex to point back to its parent vertex directly or indirectly.
-  - This is commonly seen in undirected graphs but possible in directed too. 
-  - It requires we keep track of vertices we've visited otherwise we could potentially traverse infinitely.
+1. It's [recursive](https://en.wikipedia.org/wiki/Recursion_(computer_science))
+2. We're not searching for anything here instead we're printing out a value each time a vertex is visited
+3. It is possible for a vertex to point back to its parent vertex directly or indirectly
+  - This is commonly seen in undirected graphs but possible in directed too
+  - It requires we keep track of vertices we've visited otherwise we could potentially traverse infinitely
 
 {% highlight swift %}
 // 1
@@ -136,17 +137,17 @@ func depthFirstSearch(from vertex: Vertex) {
 }
 {% endhighlight %}
 
-1. Defines a function that takes in one parameter `vertex` of optional type `Vertex`.
-    - The `?` denotes this is an [optional type](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Types.html#//apple_ref/doc/uid/TP40014097-CH31-ID452) and means that this value could be nil. 
+1. Defines a function that takes in one parameter `vertex` of optional type `Vertex`
+    - The `?` denotes this is an [optional type](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Types.html#//apple_ref/doc/uid/TP40014097-CH31-ID452) and means that this value could be nil 
     - The `from` is a named parameter and helps the function name read like a sentence: `depthFirstSearch(from: someRootVertex)`
-2. Mark the `vertex` as visited so we don't accidentally visit it again.
-3. Print the `value` property of the `vertex` followed by a new line.
+2. Mark the `vertex` as visited so we don't accidentally visit it again
+3. Print the `value` property of the `vertex` followed by a new line
 4. We iterate through all the root's adjacent vertices denoting the iteration variable as `adjacentVertex`
-5. We check if we haven't visited the `adjacentVertex` before doing anything.
-6. Continue the traversal by callling `depthFirstSearch(from:)` again and passing `adjacentVertex` as the new vertex.
+5. We check if we haven't visited the `adjacentVertex` before doing anything
+6. Continue the traversal by calling `depthFirstSearch(from:)` again and passing `adjacentVertex` as the new vertex
 
 Steps `1.` to `6.` will repeat until we've exhausted all the vertices in the graph.
-The output should look like this:
+The output would look like this:
 ```
 A
 B
@@ -183,7 +184,7 @@ with the following output:
 <UIView: 0x7fecf2106100; frame = (0 10; 100 500); layer = <CALayer: 0x600000028500>>
 ```
 
-You can even override the `description` function to provide a custom description message:
+You can override the `description` function to provide a custom description message:
 
 {% highlight swift %}
 class Tutorial: NSObject {
@@ -193,7 +194,7 @@ class Tutorial: NSObject {
         self.title = title
     }
 
-    /// This overrides the default description
+    /// This overrides the superclass description
     override var description: String {
         return "<Tutorial: \(title)>"
     }
@@ -212,7 +213,7 @@ with the following output:
 <Tutorial: "This is a tutorial about Cats">
 ```
 
-For a pure Swift class (that does not inherit from NSObject) or struct, you can achieve this via protocols such [CustomStringConvertible](https://developer.apple.com/documentation/swift/customstringconvertible) and [CustomDebugStringConvertible](https://developer.apple.com/documentation/swift/customdebugstringconvertible) to name a few.
+For a pure Swift class (one that does not inherit from NSObject) or struct, you can achieve this via protocols such [CustomStringConvertible](https://developer.apple.com/documentation/swift/customstringconvertible) and [CustomDebugStringConvertible](https://developer.apple.com/documentation/swift/customdebugstringconvertible).
 
 These protocols could be used as follows:
 
@@ -236,9 +237,10 @@ However, using it is one of those things that's easier in Objective-C but still 
 
 *Please note that since this a private API it should **NOT** be shipped in production code. Your app is likely get rejected from the App Store. For debugging purposes though it should be fine.*
 
-We're going to set up a simple view heirarchy in the below code snippet. This setup is a simplification since we're not
-taking into account layout and some of these views such as `tableView` shouldn't have subviews added to them. However, recall this
-is just to demonstrate a concept so some liberties are being taken.
+We're going to set up a simple view hierarchy in the below code snippet. 
+This setup is heavily simplified and likely not how you would actually setup a UI since:
+- We're not taking view layout into account; and 
+- Some of these views such as `tableView` shouldn't have subviews added to them. 
 
 {% highlight swift %}
 // 1
@@ -262,15 +264,15 @@ view.addSubview(tableView)
 print(view.perform("recursiveDescription"))
 {% endhighlight %}
 
-1. Creates a `UIScrollView` and adds two labels: `label1` and `label2` as subviews.
-2. Creates a `UITableView` and adds a single `UImageView` as a subview.
-3. Creates a `UIView` and adds the `scrollView` and `tableView` from above as subviews.
+1. Creates a `UIScrollView` and adds two labels: `label1` and `label2` as subviews
+2. Creates a `UITableView` and adds a single `UImageView` as a subview
+3. Creates a `UIView` and adds the `scrollView` and `tableView` from above as subviews
 4. Calls `recursiveDescription` on the `view` via the `perform()` function
-    - Since this is a private function, we can't just call `view.recursiveDescription` as it won't compile. 
-    - Instead we call this function via `perform()`. This lets us call an arbitrary function on an object by its name. 
-    - This approach to function calling not recommended though as it'll crash if the object does not implement it.
+    - Since this is a private function, we can't just call `view.recursiveDescription()` as it won't compile
+    - Instead we call this function via `perform()`. This lets us call an arbitrary function on an object by its name
+    - This approach to function calling is **not** recommended though as it'll crash if the object does not implement it
 
-The output should look something like this minus the comments `//` and `[...]` is used to truncate the output:
+The output should look something like this minus the comments `//` and `[...]` which is used to truncate the output:
 
 ```
 <UIView: 0x7fcf29812970; [...]> // view
@@ -281,13 +283,14 @@ The output should look something like this minus the comments `//` and `[...]` i
    |    | <UIImageView: 0x7fcf29810f80; [...]> // imageView
 ```
 
-The above output shows each view with it's subviews indented to represent depth.
+The above output shows each view description along with the description of its subviews indented to represent depth.
+
 The indent is denoted with a pipe (`|`) and spaces. You can see that this matches our initial code: `view` is the parent of `scrollView` and `tableView` which are parents of their own subviews.
 
-We can then conclude from the above output that it looks like the following is happening:
+We can conclude from the above output that the following is happening:
 
 ```
-1. Vist view
+1. Visit view
 2. view has two subviews: scrollView and tableView
 3. Visit scrollView
 4. scrollView has two subviews: label1 and label2
@@ -303,14 +306,14 @@ We can then conclude from the above output that it looks like the following is h
 14. imageView has no subviews so we've exhausted this view
 ```
 
-If the above look familiar to you then you're noticing something very important. These steps are essentially the same as the steps outlined in the "Depth First Search" traversal.
+If the above look familiar to you then you're noticing something very important. These steps follow the same algorithm as the steps in the "Depth First Search" traversal.
 
 ## Reverse engineering `recursiveDescription`
 
 It looks like `recursiveDescription` is using DFS to print out its hierarchy but how can we confirm this without looking at the source code?
 
-We'll have to attempt to reverse engineer this by treating the function as a black box.
-We don't know how it works but we can observe what the output is for varying inputs:
+Our only option is to attempt to reverse engineer the function. 
+Since we don't know how it works we have to treat the function as a black box. We can observe what the output is for varying inputs.
 
 Additionally, it'll help to simplify what we want to print out in our version of `recursiveDescription`. 
 We'll change the previous output to ignore the spaces around the pipes (`|`):
@@ -324,15 +327,15 @@ We'll change the previous output to ignore the spaces around the pipes (`|`):
 ||<UIImageView: 0x7fcf29810f80; [...]>
 ```
 
-Since the output represents a heirarchy, you might notice it can be represented similar to the graph in Figure 1 as:
+Since the output represents a hierarchy, you might notice it can be represented similar to the graph in Figure 1 as:
 
-*Figure 2. UIView heirarchy graph*
+*Figure 2. UIView hierarchy graph*
 
 <img src="/assets/img/posts/20171210/subview_graph.png" width="60%" height="60%">
 
-### Trivial View Heriarachy
+### Trivial View Hierarchy
 
-Let's try to solve the simple case: a heirarchy consisting of a single UIView.
+Let's try to solve the simple case: a hierarchy consisting of a single UIView.
 If we only have one view then we just need to print out its description.
 
 {% highlight swift %}
@@ -346,11 +349,11 @@ extension UIView {
 }
 {% endhighlight %}
 
-1. Create an extension so we can add our `recursiveDescription` function to UIView.
-    - An `extension` lets you add functions to an existing class.
-    - This is especially useful when you don't have access to the class internals.
-2. Defines a function called `recursiveDescription` that takes no parameters and returns a `String`.
-3. Return the `description` of the view.
+1. Create an extension so we can add our `recursiveDescription` function to UIView
+    - An `extension` lets you add functions to an existing class
+    - This is especially useful when you don't have access to the class internals
+2. Defines a function called `recursiveDescription` that takes no parameters and returns a `String`
+3. Return the `description` of the view
 
 Let's test out what happens when we print the `recursiveDescription` for a single view using our implementation:
 
@@ -365,10 +368,11 @@ The output should look like:
 <UIView: 0x7fcf29812970; [...]>
 ```
 
-However, that isn't very exciting, is it? If we have a more complex heirarchy then it'll only ever print the parent view.
-We have be able to print the parent view's `description` along with all of its subview's `description`s.
+However, that isn't very exciting, is it? If we have a more complex hierarchy then it'll only ever print the parent view.
 
-### Non-Trivial View Heriarachy
+We have be able to print the parent view's `description` along with all of the subview `description`s.
+
+### Non-Trivial View Hierarchy
 
 We now need a way of iterating through the subviews of a view and we can do that via the UIView property `subviews`. This property returns an array of the immediate subviews for a given view. 
 
@@ -377,7 +381,7 @@ We now need a way of iterating through the subviews of a view and we can do that
 var subviews: [UIView] { get }
 ```
 
-This should remind you of an adjacency list and we can also model the view heirarchy as:
+This should remind you of an adjacency list and we can also model the view hierarchy similarly:
 
 *Table 2. View and Subviews from Snippet 1*
 
@@ -390,7 +394,7 @@ This should remind you of an adjacency list and we can also model the view heira
 |    label2     | [ ]                        |
 |   imageView   | [ ]                        |
 
-With the ability to get subviews we can update our original `recursiveDescription` implementation to match a traditional DFS implementation as:
+With the ability to get subviews we can update our original `recursiveDescription` implementation to match a traditional DFS implementation as follows:
 
 {% highlight swift %}
 // The extension UIView code is present but omitted for simplicity
@@ -413,13 +417,13 @@ func recursiveDescription() -> String {
 }
 {% endhighlight %}
 
-1. Assert that this view has subviews by checking if its subviews array is empty.
-    - `guard` is a Swift feature that acts like an assertion. If the assertion fails then it enters the `else` block.
-2. Initializes a local variable `text` with the description of the current view we're at.
-3. Iterates through each of the views in `subviews` denoting each as `view` (singular).
-4. Appends the results of calling `recursiveDescription()` on each `view` to `text`.
-  - Since a view cannot have its parent as a subview, we don't need to check if we've visited it already.
-5. Returns the final version `text` to be used by the caller.
+1. Assert that this view has subviews by checking if its subviews array is empty
+    - `guard` is a Swift feature that acts like an assertion. If the assertion fails then it enters the `else` block
+2. Initializes a local variable `text` with the description of the current view we're at
+3. Iterates through each of the views in `subviews` denoting each as `view` (singular)
+4. Appends the results of calling `recursiveDescription()` on each `view` to `text`
+  - Since a view cannot have its parent as a subview, we don't need to check if we've visited it already
+5. Returns the final version `text` to be used by the caller
 
 This will yield us a result that looks very similar to:
 
@@ -457,14 +461,14 @@ The output now looks like:
 <UIImageView: 0x7fa2db70d1e0; [...]>
 ```
 
-This is better but there is no indentation representing heirarchy depth.
+This is better but there is no indentation representing hierarchy depth.
 
 ### Expanding `recursiveDescription`
 
 How do we indicate what level we're on and how do we get those pipes (`|`) to display?
-That's the great thing about recursive functions. Since we're repeatedly calling ourselves we can pass down data via function parameters.
+Since we're recursively calling our function we can pass down data through a function parameter.
 
-We could extend our function to include a `"prefix"` parameter. At each level we'll pass down what to prepend before each output.
+We could extend our function to include a `"prefix"` parameter and at each level we'll pass down what to prepend before each output.
 
 For example:
 - In level 1, `prefix` is `""`
@@ -503,10 +507,10 @@ func recursiveDescriptionHelper(with prefix: String) -> String {
 }
 {% endhighlight %}
 
-1. Append a pipe (`|`) to the `prefix` parameter and store it in the local variable `nextPrefix`.
-2. We'll append the `nextPrefix` to the text prior to appending the view's `recursiveDescription`.
-3. Call `recursiveDescriptionHelper` and pass in the `nextPrefix` to use for the next recursive call.
-    - Recall the recursive calls will stop once the view has no more subviews.
+1. Append a pipe (`|`) to the `prefix` parameter and store it in the local variable `nextPrefix`
+2. We'll append the `nextPrefix` to the text prior to appending the view's `recursiveDescription`
+3. Call `recursiveDescriptionHelper` and pass in the `nextPrefix` to use for the next recursive call
+    - Recall the recursive calls will stop once the view has no more subviews
 
 Afterwards, we should expect to see an output like:
 
@@ -519,23 +523,23 @@ Afterwards, we should expect to see an output like:
 ||<UIImageView: 0x7fa2db70d1e0; [...]>
 ```
 
-This matches the expected output of our version of `recursiveDescription`.
-Although, this doesn't technically match what the real `recursiveDescription` does I hope you can see how it can be expanded to match the full implementation.
+This matches the expected output of our version of `recursiveDescription` but it doesn't technically match what the real `recursiveDescription` does. 
 
+Hopefully, you see how DFS could have been used for the real implementation and how we can expand on it from here.
 The final version is in this [gist](https://gist.github.com/ajfigueroa/2eeba658148474a5fce4d0bd8821fb22).
 
 ## Conclusion
 
 In this post, we looked at DFS and how a potential application exists in the function `recursiveDescription`.
-We also briefly touched on how to reverse engineer a function by treating it as a black box. We can apply different inputs
-while observing the output to figure out what it seems to be doing.
+We also briefly touched on how to reverse engineer a function by treating it as a black box. 
 
-I hoped this helped inspire you to keep an eye out for where some of these famous algorithms may pop up in your day to day life.
+I hoped this helped inspire you to look out for some of these famous algorithms in your day to day life.
+It really helps make the concept stick if you can see a practical application for it. 
 
-Let me know if you have any suggestions or questions about this, I'd really appreciate the feedback.
+Let me know if you have any suggestions or questions, I'd really appreciate the feedback.
 
 ## Additional Resources
 
 - [Adjacency Lists](https://www.raywenderlich.com/152046/swift-algorithm-club-graphs-adjacency-list) and
 - [Depth First Search](https://www.raywenderlich.com/157949/swift-algorithm-club-depth-first-search) in great detail.
-- A [note](https://developer.apple.com/library/content/technotes/tn2239/_index.html#//apple_ref/doc/uid/DTS40010638-CH1-SUBSECTION34) from Apple about `recursiveDescripton` usage.
+- A [blurb](https://developer.apple.com/library/content/technotes/tn2239/_index.html#//apple_ref/doc/uid/DTS40010638-CH1-SUBSECTION34) in Apple documentation about `recursiveDescription` usage.
