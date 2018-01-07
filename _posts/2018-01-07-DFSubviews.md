@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "DFSubviews"
+title: DFSubviews
 ---
 
 If you've studied Computer Science or prepared for technical interviews then you've likely seen [graph traversal](https://en.wikipedia.org/wiki/Graph_traversal).
