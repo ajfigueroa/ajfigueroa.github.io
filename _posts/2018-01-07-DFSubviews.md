@@ -27,7 +27,7 @@ I'm going to walk through a brief recap on Graphs, Adjacency Lists, and DFS. Aft
 Let's first look at the following graph:
 
 *Figure 1. Directed Graph*
-<img src="/assets/img/posts/20180107/directed_graph.png" width="50%" height="50%">
+<img src="/assets/img/posts/20180107/directed_graph.png" width="75%" height="75%">
 
 This is a **directed** graph that consists of six (6) **vertices** and five (5) **edges**.
 - **Vertices** (a.k.a nodes or points) are the encircled data
@@ -81,7 +81,7 @@ Given the graph from Figure 1, we would do these steps following the algorithm:
 ```
 
 This can be better visualized as:
-<img src="/assets/img/posts/20180107/dfs_visualization.gif" width="50%" height="50%">
+<img src="/assets/img/posts/20180107/dfs_visualization.gif" width="75%" height="75%">
 
 
 Let's look at how we could implement DFS in Swift. First, we need to model a single vertex. One way could look like:
@@ -331,7 +331,7 @@ Since the output represents a hierarchy, you might notice it can be represented 
 
 *Figure 2. UIView hierarchy graph*
 
-<img src="/assets/img/posts/20180107/subview_graph.png" width="60%" height="60%">
+<img src="/assets/img/posts/20180107/subview_graph.png" width="75%" height="75%">
 
 ### Trivial View Hierarchy
 
