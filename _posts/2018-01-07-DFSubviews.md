@@ -3,9 +3,7 @@ layout: post
 title: DFSubviews
 ---
 
-If you've studied Computer Science or prepared for technical interviews then you've likely seen [graph traversal](https://en.wikipedia.org/wiki/Graph_traversal).
-
-The two popular traversal algorithms are: [Depth First Search (DFS)](https://en.wikipedia.org/wiki/Depth-first_search) and [Breadth First Search (BFS)](https://en.wikipedia.org/wiki/Breadth-first_search). Both of which have lots of [applications](https://en.wikipedia.org/wiki/Graph_traversal#Applications).
+There are two popular traversal algorithms for [graph traversal](https://en.wikipedia.org/wiki/Graph_traversal): [Depth First Search (DFS)](https://en.wikipedia.org/wiki/Depth-first_search) and [Breadth First Search (BFS)](https://en.wikipedia.org/wiki/Breadth-first_search). Both of which have lots of [applications](https://en.wikipedia.org/wiki/Graph_traversal#Applications).
 
 I believe that UIView's private function: `recursiveDescription` is an application of DFS and I'll attempt to re-create it with that assumption.
 
