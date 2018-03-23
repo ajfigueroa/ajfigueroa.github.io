@@ -10,4 +10,3 @@ npm install
 bundle install
 gulp
 ```
-I've purposefully separated them as I don't want to constantly call `npm install` and `bundle install` while building.
