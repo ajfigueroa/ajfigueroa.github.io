@@ -524,7 +524,7 @@ Afterwards, we should expect to see an output like:
 This matches the expected output of our version of `recursiveDescription` but it doesn't technically match what the real `recursiveDescription` does. 
 
 Hopefully, you see how DFS could have been used for the real implementation and how we can expand on it from here.
-The final version is in this [gist](https://gist.github.com/ajfigueroa/2eeba658148474a5fce4d0bd8821fb22).
+I've put the final version together for you in this [playground](https://github.com/ajfigueroa/blog-code/tree/master/posts/1-DFSubviews.playground).
 
 ## Conclusion
 
@@ -541,3 +541,5 @@ Let me know if you have any suggestions or questions, I'd really appreciate the 
 - [Adjacency Lists](https://www.raywenderlich.com/152046/swift-algorithm-club-graphs-adjacency-list) and
 - [Depth First Search](https://www.raywenderlich.com/157949/swift-algorithm-club-depth-first-search) in great detail.
 - A [blurb](https://developer.apple.com/library/content/technotes/tn2239/_index.html#//apple_ref/doc/uid/DTS40010638-CH1-SUBSECTION34) in Apple documentation about `recursiveDescription` usage.
+
+Updated: 03/28/2018
