@@ -2,6 +2,7 @@
 layout: post
 title: 'DFSubviews: DFS and UIKit'
 excerpt_separator: <!--break-->
+modified_date: '2018-04-03 00:00:00'
 ---
 
 There are two popular traversal algorithms for [graph traversal](https://en.wikipedia.org/wiki/Graph_traversal): [Depth First Search (DFS)](https://en.wikipedia.org/wiki/Depth-first_search) and [Breadth First Search (BFS)](https://en.wikipedia.org/wiki/Breadth-first_search). Both of which have lots of [applications](https://en.wikipedia.org/wiki/Graph_traversal#Applications).
