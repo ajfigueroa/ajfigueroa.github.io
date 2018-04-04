@@ -1,14 +1,13 @@
 ---
 layout: post
 title: 'DFSubviews: DFS and UIKit'
+excerpt_separator: <!--break-->
 ---
 
 There are two popular traversal algorithms for [graph traversal](https://en.wikipedia.org/wiki/Graph_traversal): [Depth First Search (DFS)](https://en.wikipedia.org/wiki/Depth-first_search) and [Breadth First Search (BFS)](https://en.wikipedia.org/wiki/Breadth-first_search). Both of which have lots of [applications](https://en.wikipedia.org/wiki/Graph_traversal#Applications).
 
 I believe that UIView's private function: `recursiveDescription` is an application of DFS and I'll attempt to re-create it with that assumption.
 
-<!--break-->
-<!-- Adding a double break as the next header (##) breaks formatting for previews  ¯\_(ツ)_/¯ -->
 <!--break-->
 
 ## Assumptions
@@ -541,5 +540,3 @@ Let me know if you have any suggestions or questions, I'd really appreciate the 
 - [Adjacency Lists](https://www.raywenderlich.com/152046/swift-algorithm-club-graphs-adjacency-list) and
 - [Depth First Search](https://www.raywenderlich.com/157949/swift-algorithm-club-depth-first-search) in great detail.
 - A [blurb](https://developer.apple.com/library/content/technotes/tn2239/_index.html#//apple_ref/doc/uid/DTS40010638-CH1-SUBSECTION34) in Apple documentation about `recursiveDescription` usage.
-
-Updated: 03/28/2018
