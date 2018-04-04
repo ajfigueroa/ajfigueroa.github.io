@@ -18,7 +18,7 @@ I'm going to assume you're familiar with:
 - Swift but it's not necessary assuming you're familiar with another language
     - There are some Swift only features that I'll do my best to explain.
 
-I'm going to walk through a brief recap on Graphs, Adjacency Lists, and DFS. Afterwards, I'll use this as the foundation for reverse engineering `recursiveDescription`.
+I'm going to walk through a brief recap of Graphs, Adjacency Lists, and DFS. Afterwards, I'll use this as the foundation for reverse engineering `recursiveDescription`.
 
 ## Graphs 101
 
@@ -57,7 +57,7 @@ The rest of vertices and their adjacent vertices are outlined below:
 
 ## Depth First Search
 
-DFS is a traversal algorithm that: **starts at the root (top most vertex) and exhaust all the branches of one neighbour before repeating for the next neighbour**.
+DFS is a traversal algorithm that: **starts at the root (topmost vertex) and exhaust all the branches of one neighbour before repeating for the next neighbour**.
 
 Given the graph from Figure 1, we would do these steps following the algorithm:
 
@@ -233,10 +233,10 @@ For a single view, `description` is often enough but what if you wanted to get i
 `recursiveDescription` is a private function on UIView that prints the `description` of the view and all its subviews (or children views). 
 However, using it is one of those things that's easier in Objective-C but still possible in Swift. We just have to do some [extra steps](https://stackoverflow.com/a/27694502/1631577) to get it to work.
 
-*Please note that since this a private API it should **NOT** be shipped in production code. Your app is likely get rejected from the App Store. For debugging purposes though it should be fine.*
+*Please note that since this a private API it should **NOT** be shipped in production code. Your app is likely to get rejected from the App Store. For debugging purposes though it should be fine.*
 
 We're going to set up a simple view hierarchy in the below code snippet. 
-This setup is heavily simplified and likely not how you would actually setup a UI since:
+This setup is heavily simplified and likely not how you would actually set up a UI since:
 - We're not taking view layout into account; and 
 - Some of these views such as `tableView` shouldn't have subviews added to them. 
 
@@ -267,8 +267,8 @@ print(view.perform("recursiveDescription"))
 3. Creates a `UIView` and adds the `scrollView` and `tableView` from above as subviews
 4. Calls `recursiveDescription` on the `view` via the `perform()` function
     - Since this is a private function, we can't just call `view.recursiveDescription()` as it won't compile
-    - Instead we call this function via `perform()`. This lets us call an arbitrary function on an object by its name
-    - This approach to function calling is **not** recommended though as it'll crash if the object does not implement it
+    - Instead, we call this function via `perform()`. This lets us call an arbitrary function on an object by its name
+    - This approach to function calls is **not** recommended though as it'll crash if the object does not implement it
 
 The output should look something like this minus the comments `//` and `[...]` which is used to truncate the output:
 
@@ -283,7 +283,7 @@ The output should look something like this minus the comments `//` and `[...]` w
 
 The above output shows each view description along with the description of its subviews indented to represent depth.
 
-The indent is denoted with a pipe (`|`) and spaces. You can see that this matches our initial code: `view` is the parent of `scrollView` and `tableView` which are parents of their own subviews.
+The indentation is denoted with a pipe (`|`) and spaces. You can see that this matches our initial code: `view` is the parent of `scrollView` and `tableView` which are parents of their own subviews.
 
 We can conclude from the above output that the following is happening:
 
@@ -325,7 +325,7 @@ We'll change the previous output to ignore the spaces around the pipes (`|`):
 ||<UIImageView: 0x7fcf29810f80; [...]>
 ```
 
-Since the output represents a hierarchy, you might notice it can be represented similar to the graph in Figure 1 as:
+Since the output represents a hierarchy, you might notice it can be represented similarly to the graph in Figure 1 as:
 
 *Figure 2. UIView hierarchy graph*
 
@@ -368,7 +368,7 @@ The output should look like:
 
 However, that isn't very exciting, is it? If we have a more complex hierarchy then it'll only ever print the parent view.
 
-We have be able to print the parent view's `description` along with all of the subview `description`s.
+We want to be able to print the parent view's `description` along with all of its subview `description`s.
 
 ### Non-Trivial View Hierarchy
 
@@ -416,7 +416,7 @@ func recursiveDescription() -> String {
 {% endhighlight %}
 
 1. Assert that this view has subviews by checking if its subviews array is empty
-    - `guard` is a Swift feature that acts like an assertion. If the assertion fails then it enters the `else` block
+    - `guard` is a Swift feature that acts as an assertion. If the assertion fails then it enters the `else` block
 2. Initializes a local variable `text` with the description of the current view we're at
 3. Iterates through each of the views in `subviews` denoting each as `view` (singular)
 4. Appends the results of calling `recursiveDescription()` on each `view` to `text`
@@ -429,7 +429,7 @@ This will yield us a result that looks very similar to:
 <UIView: 0x7fa2db70ebe0; [...]><UIScrollView: 0x7fa2de80d000; [...]><UILabel: 0x7fa2db400b60; [...]><UILabel: 0x7fa2db706520; [...]><UITableView: 0x7fa2dd047c00; [...]><UIImageView: 0x7fa2db70d1e0; frame = (0 0; 0 0); [...]>
 ```
 
-What happened? It looks like we forgot to add new lines after each print.
+What happened? It looks like we forgot to add new lines to each print.
 
 Let's replace our line that appends each `subview.recursiveDescription()` to have a prefixed new-line character (`\n`).
 
@@ -466,7 +466,7 @@ This is better but there is no indentation representing hierarchy depth.
 How do we indicate what level we're on and how do we get those pipes (`|`) to display?
 Since we're recursively calling our function we can pass down data through a function parameter.
 
-We could extend our function to include a `"prefix"` parameter and at each level we'll pass down what to prepend before each output.
+We could extend our function to include a `"prefix"` parameter and at each level, we'll pass down what to prepend before each output.
 
 For example:
 - In level 1, `prefix` is `""`
