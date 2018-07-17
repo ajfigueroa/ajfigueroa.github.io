@@ -7,7 +7,7 @@ enforce_ssl: alexjfigueroa.com
 baseurl: /
 paginate: 5
 include: [_pages]
-exclude: [Gemfile , Gemfile.lock, LICENSE, README.md, CNAME, vendor, package.json, node_modules, gulpfile.js]
+exclude: [Gemfile , Gemfile.lock, LICENSE, README.md, CNAME, vendor, package.json, node_modules, gulpfile.js, Rakefile]
 plugins: [jekyll-paginate]
 highlighter: rouge
 
