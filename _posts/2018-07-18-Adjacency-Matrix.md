@@ -166,6 +166,7 @@ The DFS traversal for a matrix requires that we traverse as follows:
 - Repeat these steps until all rows have been traversed
 
 ```swift
+// This algorithm is courtesy of my colleague Michelle Lee!
 func dfsMatrix(_ matrix: [[Int]], row: Int = 0) {
     guard !matrix.isEmpty else { return }
 
