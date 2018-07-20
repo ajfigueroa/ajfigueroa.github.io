@@ -2,7 +2,7 @@
 layout: post
 title: 'Adjacency Matrix'
 excerpt_separator: <!--break-->
-categories: Reference
+categories: References
 ---
 
 In the last [post](/blog/2018/01/07/DFSubviews), we explored how a graph can be represented using an adjacency list. We'll now look at how an adjacency matrix can also be used.
