@@ -3,6 +3,7 @@ layout: post
 title: 'DFSubviews: DFS and UIKit'
 excerpt_separator: <!--break-->
 modified_date: '2018-04-03 00:00:00'
+categories: Blog
 ---
 
 There are two popular traversal algorithms for [graph traversal](https://en.wikipedia.org/wiki/Graph_traversal): [Depth First Search (DFS)](https://en.wikipedia.org/wiki/Depth-first_search) and [Breadth First Search (BFS)](https://en.wikipedia.org/wiki/Breadth-first_search). Both of which have lots of [applications](https://en.wikipedia.org/wiki/Graph_traversal#Applications).
@@ -33,14 +34,14 @@ This is a **directed** graph that consists of six (6) **vertices** and five (5) 
 - **Edges** (a.k.a. arcs or lines) are the lines that connect each vertex
     - They can also have [weights](https://en.wikipedia.org/wiki/Glossary_of_graph_theory_terms#weight) associated with them
     - Ex. `A` has two edges associated with it: one to `B` and another to `C`
-- **Directed** refers to the [orientation](https://en.wikipedia.org/wiki/Orientation_(graph_theory)) of the graph 
+- **Directed** refers to the [orientation](https://en.wikipedia.org/wiki/Orientation_(graph_theory)) of the graph
     - This specifically refers to **how** edges connect each vertex
     - A graph can either be [directed](https://en.wikipedia.org/wiki/Directed_graph) or [undirected](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Undirected_graph) (sometimes referred to as bidirectional)
     - Ex. If we started at `A`, we could go to `B` or `C` but we could not do the reverse
 
 ## Adjacency Lists
 
-An [adjacency list](https://en.wikipedia.org/wiki/Adjacency_list) is a collection of neighbouring vertices relative to a given vertex. 
+An [adjacency list](https://en.wikipedia.org/wiki/Adjacency_list) is a collection of neighbouring vertices relative to a given vertex.
 
 For the graph in Figure 1, We would say that vertex `B` and vertex `C` are adjacent to vertex `A`.
 
@@ -71,7 +72,7 @@ Given the graph from Figure 1, we would do these steps following the algorithm:
 7. B has one more neighbour: E
 8. Visit E
 9. E has no neighbours so we've exhausted this branch
-10. A has one more neighbour: C 
+10. A has one more neighbour: C
 11. Visit C next
 12. C has one neighbour: F
 13. Visit F
@@ -136,7 +137,7 @@ func depthFirstSearch(from vertex: Vertex) {
 {% endhighlight %}
 
 1. Defines a function that takes in one parameter `vertex` of optional type `Vertex`
-    - The `?` denotes this is an [optional type](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Types.html#//apple_ref/doc/uid/TP40014097-CH31-ID452) and means that this value could be nil 
+    - The `?` denotes this is an [optional type](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Types.html#//apple_ref/doc/uid/TP40014097-CH31-ID452) and means that this value could be nil
     - The `from` is a named parameter and helps the function name read like a sentence: `depthFirstSearch(from: someRootVertex)`
 2. Mark the `vertex` as visited so we don't accidentally visit it again
 3. Print the `value` property of the `vertex` followed by a new line
@@ -166,7 +167,7 @@ Before we can look at `recursiveDescription` we need to first look at its counte
 var description: String { get }
 ```
 
-[description](https://developer.apple.com/documentation/objectivec/nsobject/1418799-description) is a property that exists on all Objective-C classes that inherit from `NSObject`. This property returns a string representation of the object's contents. This is similar to `__str__`/`__repr__` in Python. 
+[description](https://developer.apple.com/documentation/objectivec/nsobject/1418799-description) is a property that exists on all Objective-C classes that inherit from `NSObject`. This property returns a string representation of the object's contents. This is similar to `__str__`/`__repr__` in Python.
 
 If you ever had to debug something in iOS then you've likely called `description` directly or indirectly.
 The way the description would typically be called is as follows:
@@ -228,17 +229,17 @@ struct Tutorial: CustomStringConvertible {
 
 ## UIView `recursiveDescription`
 
-For a single view, `description` is often enough but what if you wanted to get information about its view hierarchy? That is where `recursiveDescription` comes in. 
+For a single view, `description` is often enough but what if you wanted to get information about its view hierarchy? That is where `recursiveDescription` comes in.
 
-`recursiveDescription` is a private function on UIView that prints the `description` of the view and all its subviews (or children views). 
+`recursiveDescription` is a private function on UIView that prints the `description` of the view and all its subviews (or children views).
 However, using it is one of those things that's easier in Objective-C but still possible in Swift. We just have to do some [extra steps](https://stackoverflow.com/a/27694502/1631577) to get it to work.
 
 *Please note that since this a private API it should **NOT** be shipped in production code. Your app is likely to get rejected from the App Store. For debugging purposes though it should be fine.*
 
-We're going to set up a simple view hierarchy in the below code snippet. 
+We're going to set up a simple view hierarchy in the below code snippet.
 This setup is heavily simplified and likely not how you would actually set up a UI since:
-- We're not taking view layout into account; and 
-- Some of these views such as `tableView` shouldn't have subviews added to them. 
+- We're not taking view layout into account; and
+- Some of these views such as `tableView` shouldn't have subviews added to them.
 
 {% highlight swift %}
 // 1
@@ -310,10 +311,10 @@ If the above look familiar to you then you're noticing something very important.
 
 It looks like `recursiveDescription` is using DFS to print out its hierarchy but how can we confirm this without looking at the source code?
 
-Our only option is to attempt to reverse engineer the function. 
+Our only option is to attempt to reverse engineer the function.
 Since we don't know how it works we have to treat the function as a black box. We can observe what the output is for varying inputs.
 
-Additionally, it'll help to simplify what we want to print out in our version of `recursiveDescription`. 
+Additionally, it'll help to simplify what we want to print out in our version of `recursiveDescription`.
 We'll change the previous output to ignore the spaces around the pipes (`|`):
 
 ```
@@ -372,7 +373,7 @@ We want to be able to print the parent view's `description` along with all of it
 
 ### Non-Trivial View Hierarchy
 
-We now need a way of iterating through the subviews of a view and we can do that via the UIView property `subviews`. This property returns an array of the immediate subviews for a given view. 
+We now need a way of iterating through the subviews of a view and we can do that via the UIView property `subviews`. This property returns an array of the immediate subviews for a given view.
 
 ```swift
 // Swift generated version of UIView.h
@@ -475,7 +476,7 @@ For example:
 - In level 4, `prefix` is `"|||"`
 - In level n, `prefix` is `"||...||"` (`"|"` repeated n-1 times)
 
-However, since the original implementation of `recursiveDescription` takes no parameters, we'll need to create a helper function to handle the `prefix` passing and recursive nature of this function. 
+However, since the original implementation of `recursiveDescription` takes no parameters, we'll need to create a helper function to handle the `prefix` passing and recursive nature of this function.
 
 We'll call it `recursiveDescriptionHelper` and it'll take a single `prefix` parameter of type `String`:
 
@@ -521,7 +522,7 @@ Afterwards, we should expect to see an output like:
 ||<UIImageView: 0x7fa2db70d1e0; [...]>
 ```
 
-This matches the expected output of our version of `recursiveDescription` but it doesn't technically match what the real `recursiveDescription` does. 
+This matches the expected output of our version of `recursiveDescription` but it doesn't technically match what the real `recursiveDescription` does.
 
 Hopefully, you see how DFS could have been used for the real implementation and how we can expand on it from here.
 I've put the final version together for you in this [playground](https://github.com/ajfigueroa/blog-code/tree/master/posts/1-DFSubviews.playground).
@@ -529,10 +530,10 @@ I've put the final version together for you in this [playground](https://github.
 ## Conclusion
 
 In this post, we looked at DFS and how a potential application exists in the function `recursiveDescription`.
-We also briefly touched on how to reverse engineer a function by treating it as a black box. 
+We also briefly touched on how to reverse engineer a function by treating it as a black box.
 
 I hoped this helped inspire you to look out for some of these famous algorithms in your day to day life.
-It really helps make the concept stick if you can see a practical application for it. 
+It really helps make the concept stick if you can see a practical application for it.
 
 Let me know if you have any suggestions or questions, I'd really appreciate the feedback.
 

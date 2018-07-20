@@ -2,9 +2,10 @@
 layout: post
 title: 'Adjacency Matrix'
 excerpt_separator: <!--break-->
+categories: Reference
 ---
 
-In the last [post](/2018/01/07/DFSubviews), we explored how a graph can be represented using an adjacency list. We'll now look at how an adjacency matrix can also be used.
+In the last [post](/blog/2018/01/07/DFSubviews), we explored how a graph can be represented using an adjacency list. We'll now look at how an adjacency matrix can also be used.
 
 <!--break-->
 
@@ -54,7 +55,7 @@ Vertex `A` is connected to both `B` and `C`.
 
 1. Find the row corresponding to `A`: 0
 2. Then we find the column for `B`: 1
-3. Mark this point at row 0 and column 1 (`(0, 1)`) with a value of 1 
+3. Mark this point at row 0 and column 1 (`(0, 1)`) with a value of 1
 4. Then we find the column for `C`: 2
 5. Mark this point row 0 and column 2 (`(0, 1)`) with a value of 1
 
@@ -68,7 +69,7 @@ Vertex `B` is connected to both `D` and `E`.
 
 1. Find the row corresponding to `B`: 1
 2. Then we find the column for `D`: 3
-3. Mark this point at row 1 and column 3 (`(1, 3)`) with a value of 1 
+3. Mark this point at row 1 and column 3 (`(1, 3)`) with a value of 1
 4. Then we find the column for `E`: 4
 5. Mark this point row 1 and column 4 (`(1, 4)`) with a value of 1
 
@@ -82,7 +83,7 @@ Vertex `C` is only connected to `F`.
 
 1. Find the row corresponding to `C`: 2
 2. Then we find the column for `F`: 5
-3. Mark this point at row 2 and column 5 (`(2, 5)`) with a value of 1 
+3. Mark this point at row 2 and column 5 (`(2, 5)`) with a value of 1
 
 The resulting row for `C` now looks like:
 
@@ -103,7 +104,7 @@ The completed adjacency matrix for the graph looks like:
 
 Recall:
 - `A` connects to both `B` and `C` so both `(0, 1)` and `(0, 2)` are marked with a `1`
-- However, the point at `(1, 0)` is **not** marked with a point since `B` does not connect back to `A`. 
+- However, the point at `(1, 0)` is **not** marked with a point since `B` does not connect back to `A`.
 
 ## Implementation
 
