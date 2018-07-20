@@ -12,6 +12,8 @@ permalink: /about/
 
 My name is Alex and I'm an iOS Engineer from Toronto, ON.
 
+I currently work at [Wealthsimple](https://wealthsimple.com). Previously, I've worked at [Wattpad](https://wattpad.com), [Kinetic Commerce](https://kineticcommerce.com), and my own startup [WeBeam](https://www.producthunt.com/posts/webeam).
+
 Any opinions made here are completely my own.
 
 Outside of programming, I enjoy reading, playing the guitar, and taking photos.
