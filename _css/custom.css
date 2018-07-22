@@ -36,3 +36,35 @@ html {
     margin-right: auto;
     text-align: center;
 }
+
+/*
+ * Post Metadata
+ */
+
+.row {
+    display: table;
+}
+
+.column {
+    display: table-cell;
+}
+
+.categories-column {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.pill-container {
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+    background-color: #ac4142;
+}
+
+#pill {
+    padding: 0 15px;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: middle;
+}

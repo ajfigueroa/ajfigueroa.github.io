@@ -9,7 +9,7 @@ title: Blog
     <h1 class="post-title">
       <a href="{{ post.url }}">{{ post.title }}</a>
     </h1>
-    {% include post-date-view.html post=post %}
+    {% include post-metadata-view.html post=post %}
     {{ post.excerpt }}
     <a href="{{ post.url }}">read more</a>
   </div>

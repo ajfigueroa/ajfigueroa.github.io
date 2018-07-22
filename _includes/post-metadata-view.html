@@ -1,0 +1,25 @@
+<!-- Component to display the date with modified date if present -->
+<!-- Date Formatting: http://alanwsmith.com/jekyll-liquid-date-formatting-examples -->
+<div class="row">
+  <div class="column">
+      {% if include.post.modified_date %}
+      <span class="post-date">
+        {{ include.post.date | date: "%-d %B %Y" }} · Updated on {{ include.post.modified_date | date: "%-d %B %Y" }}
+      </span>
+    {% else %}
+      <span class="post-date">
+        {{ include.post.date | date: "%-d %B %Y" }}
+      </span>
+    {% endif %}
+  </div>
+  <div class="column categories-column">
+    {% assign categories = include.post.categories %}
+    {% for category in categories %}
+      <div class="pill-container">
+        <a id="pill" href="/categories">
+          {{category}}
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
