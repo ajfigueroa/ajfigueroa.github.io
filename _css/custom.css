@@ -55,16 +55,16 @@ html {
 }
 
 .pill-container {
-    -webkit-border-radius: 16px;
-    -moz-border-radius: 16px;
-    border-radius: 16px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
     background-color: #ac4142;
 }
 
 #pill {
-    padding: 0 15px;
+    padding: 4px 12px;
     color: white;
     font-size: 14px;
+    display: block;
     text-align: center;
-    vertical-align: middle;
 }
