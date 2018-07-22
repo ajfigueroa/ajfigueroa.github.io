@@ -4,6 +4,7 @@ tagline: iOS Engineer
 url: https://alexjfigueroa.com
 enforce_ssl: alexjfigueroa.com
 baseurl: /
+site_home: Blog
 paginate: 5
 include: [_pages]
 exclude: [Gemfile , Gemfile.lock, LICENSE, README.md, CNAME, vendor, package.json, node_modules, gulpfile.js, Rakefile]
