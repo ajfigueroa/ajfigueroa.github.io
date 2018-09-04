@@ -86,7 +86,7 @@ We could easily fix by removing the explicit `self` and instead rely on the `use
 
 After posting this error message to the [tacow](https://www.meetup.com/tacow-org/) Slack group, [@rydermackay](https://twitter.com/rydermackay) pointed out to me that the Swift language is capturing the right-hand side of the conditional in a closure.
 
-That is, given the conditional: `LHS && RHS`. `RHS` was being wrapped in a closure. More specifically, the right-hand side of the conditional was being wrapped in an `autoclosure` so that it could lazily evaluate the right condition if the left condition was false.
+That is, given the conditional: `LHS && RHS` (LHS and RHS represent Left-Hand Side and Right-Hand Side respectively). `RHS` is being wrapped in a closure. More specifically, it is being wrapped in an `autoclosure` so that it could lazily evaluate the right condition if the left condition was false.
 
 This could be verified by looking at the source code for the [&& operator](https://github.com/apple/swift/blob/7f105e4e3a994e6ac87860d5bd7bf9942c52b4bb/stdlib/public/core/Bool.swift#L289):
 ```swift
@@ -105,19 +105,22 @@ but most importantly:
 
 > An autoclosure lets you delay evaluation because the code inside isn’t run until you call the closure. Delaying evaluation is useful for code that has side effects or is computationally expensive because it lets you control when that code is evaluated.
 
-That means that the above `&&` implementation at a high level is equivalent to the following. Note: We can't actually write `&&` without the `rhs` since it's defined to have both parameters. This is a custom reimplementation.
+
+That means that the above `&&` implementation at a high level is equivalent to the following. Note: We can't actually write `&&` without the `rhs` since it's defined to have both parameters.
 
 ```swift
-func andOperation (lhs: Bool, completion: () -> Bool) -> Bool {
-    return lhs ?? completion()
+// For simplicity, I've removed all throws
+public static func && (lhs: Bool, rhs: () -> Bool) -> Bool {
+    return lhs ?? rhs()
 }
 
-andOperation(lhs: someCondition) { () -> Bool in
-    return someOtherCondition
+// Example: Assume A and B are some boolean conditions
+A && { () -> Bool in
+    return B
 }
 ```
 
-If we update this code to our original error, it would actually look like:
+If we update our previous example with the high level interpretation, it would look like this
 
 ```swift
 class UserTheme: Theme {
@@ -126,8 +129,8 @@ class UserTheme: Theme {
     init(user: User) {
         self.user = user
         var themeColor: UIColor?
-        let result = andOperation(lhs: self.user.isSubscribed) { () -> Bool in
-            self.user.countryCode == "CA"
+        let result = self.user.isSubscribed && { () -> Bool in
+            return self.user.countryCode == "CA"
         }
         if result {
             themeColor = self.user.themeColor
@@ -135,10 +138,6 @@ class UserTheme: Theme {
 
         super.init(backgroundColor: themeColor)
     }
-}
-
-func andOperation (lhs: Bool, completion: () -> Bool) -> Bool {
-    return lhs ?? completion()
 }
 ```
 
@@ -152,6 +151,7 @@ There are a few ways to fix this, we could:
 Either way, these all work but in general you should typically avoid referencing `self` before the `super.init()` in cases like these.
 I hope you learned something and potentially got you interested in looking at more implementation details of the Swift programming language.
 
+The sample code can be found [here](https://github.com/ajfigueroa/blog-code/tree/master/posts/3-Unexpected-Closure.playground).
 
 ## Additional Resouces
 
