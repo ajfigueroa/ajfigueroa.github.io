@@ -5,7 +5,7 @@ excerpt_separator: <!--break-->
 categories: Blog
 ---
 
-Closures in Swift are a great feature and are useful for network callbacks, notification subscribing, and providing an alternative to the delegate pattern.
+Closures in Swift are a great feature and are useful for tasks such as: network callbacks, notification subscribing, and providing an alternative to the delegate pattern.
 
 Recently, I discovered that code as inconspicuous as a `&&` (and) conditional could also leverage this feature.
 
