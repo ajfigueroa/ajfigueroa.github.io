@@ -25,7 +25,7 @@ html {
   }
 
 /* Content footer for Copyright and Attribution */
-.copyright-footer {
+.footer {
     display: block;
     line-height: 1.75;
     font-size: 0.8rem;
