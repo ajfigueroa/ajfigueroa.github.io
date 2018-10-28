@@ -58,12 +58,12 @@ html {
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
-    background-color: #ac4142;
+    background-color: var(--pill-background-color);
 }
 
 #pill {
     padding: 4px 12px;
-    color: white;
+    color: var(--pill-text-color);
     font-size: 14px;
     display: block;
     text-align: center;

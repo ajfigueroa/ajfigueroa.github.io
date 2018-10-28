@@ -10,7 +10,7 @@ const jekyllTask = 'jekyll';
 
 // Minifies all the css into a single style.css file
 gulp.task(minifyCssTask, () => {
-    return gulp.src(['_css/poole.css', '_css/hyde.css', '_css/about.css', '_css/syntax.css', '_css/custom.css'])
+    return gulp.src(['_css/themes.css', '_css/poole.css', '_css/hyde.css', '_css/about.css', '_css/syntax.css', '_css/custom.css'])
       .pipe(cleanCss({compatibility: 'ie8'}))
       .pipe(concat('styles.css', {newLine: ' '}))
       .pipe(gulp.dest('assets'));
@@ -25,7 +25,7 @@ gulp.task(jekyllTask, () => {
         .split(/\n/)
         .forEach((message) => gutil.log('jekyll: ' + message));
     };
-  
+
     jekyll.stdout.on('data', jekyllLogger);
     jekyll.stderr.on('data', jekyllLogger);
 });
@@ -33,5 +33,5 @@ gulp.task(jekyllTask, () => {
 gulp.task('watch', () => {
     gulp.watch('_css/*', [minifyCssTask]);
 });
-  
+
 gulp.task('default', [minifyCssTask, jekyllTask, 'watch']);
