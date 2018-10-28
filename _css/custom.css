@@ -68,3 +68,7 @@ html {
     display: block;
     text-align: center;
 }
+
+.theme-selected {
+    font-weight: bold;
+}

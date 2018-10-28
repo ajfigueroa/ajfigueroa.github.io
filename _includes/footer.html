@@ -1,5 +1,8 @@
-<div>
-    <p class="footer">
+<div class="footer">
+    <p>
+        Theme: <a id="theme-button-light" onclick="return selectTheme('light');">Light</a> | <a id="theme-button-dark" onclick="return selectTheme('dark');">Dark</a>
+    </p>
+    <p>
         This site is <a href="https://github.com/ajfigueroa/ajfigueroa.github.io">open source</a>.
         <br> &copy; {{ site.time | date: '%Y' }} Alex Figueroa.
     </p>

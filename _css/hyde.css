@@ -127,6 +127,7 @@ a.sidebar-nav-item:focus {
 .content {
   padding-top:    4rem;
   padding-bottom: 4rem;
+  background-color: var(--content-background-color);
 }
 
 @media (min-width: 48em) {
@@ -172,12 +173,15 @@ a.sidebar-nav-item:focus {
 /*
  * Themes
  */
+.theme-base-08 {
+  background-color: var(--theme-background-color);
+}
 
 .theme-base-08 .sidebar {
   background-color: var(--theme-color);
 }
 
 .theme-base-08 .content a,
-.theme-base-08 .related-posts li a:hover {
-  color: var(--theme-color);
+.theme-base-08 li a:hover {
+  color: var(--theme-text-color);
 }

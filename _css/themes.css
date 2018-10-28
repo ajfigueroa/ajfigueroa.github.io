@@ -1,10 +1,14 @@
 :root {
+    --content-background-color: white;
+    --container-background-color: white;
+    --theme-background-color: white;
     --pill-background-color: #ac4142;
     --pill-text-color: white;
     --sidebar-background-color: #202020;
     --sidebar-links-color: #fff;
     --sidebar-about-text-color: #fff;
     --theme-color: #ac4142;
+    --theme-text-color: #ac4142;
     --body-color: #515151;
     --body-background-color: #fff;
     --links-visited-color: #268bd2;
@@ -24,6 +28,76 @@
     --table-background-color: #f9f9f9;
     --post-title-color: #303030;
     --post-date-color: #9a9a9a;
+    --pagination-color: #ccc;
+    --pagination-item-color: #eee;
+    --pagination-link-hover-background-color: #f5f5f5;
+}
+
+.light-theme {
+    --content-background-color: white;
+    --container-background-color: white;
+    --theme-background-color: white;
+    --pill-background-color: #ac4142;
+    --pill-text-color: white;
+    --sidebar-background-color: #202020;
+    --sidebar-links-color: #fff;
+    --sidebar-about-text-color: #fff;
+    --theme-color: #ac4142;
+    --theme-text-color: #ac4142;
+    --body-color: #515151;
+    --body-background-color: #fff;
+    --links-visited-color: #268bd2;
+    --headings-text-color: #313131;
+    --strong-text-color: #303030;
+    --hr-border-top-color: #eee;
+    --hr-border-bottom-color: #fff;
+    --abbr-text-color: #555;
+    --abbr-title-text-color: #e5e5e5;
+    --code-text-color: #bf616a;
+    --code-background-color: #f9f9f9;
+    --pre-background-color: #f9f9f9;
+    --pre-code-background-color: transparent;
+    --blockquote-color: #7a7a7a;
+    --blockquote-border-left-color: #e5e5e5;
+    --table-border-color: #e5e5e5;
+    --table-background-color: #f9f9f9;
+    --post-title-color: #303030;
+    --post-date-color: #9a9a9a;
+    --pagination-color: #ccc;
+    --pagination-item-color: #eee;
+    --pagination-link-hover-background-color: #f5f5f5;
+}
+
+.dark-theme {
+    --content-background-color: #1F1F24;
+    --container-background-color: #1F1F24;
+    --theme-background-color: #1F1F24;
+    --pill-background-color: white;
+    --pill-text-color: #1F1F24;
+    --sidebar-background-color: #202020;
+    --sidebar-links-color: #fff;
+    --sidebar-about-text-color: #fff;
+    --theme-color: #1F1F24;
+    --theme-text-color: white;
+    --body-color: #92A1B1;
+    --body-background-color: #1F1F24;
+    --links-visited-color: #268bd2;
+    --headings-text-color: white;
+    --strong-text-color: white;
+    --hr-border-top-color: #eee;
+    --hr-border-bottom-color: #fff;
+    --abbr-text-color: #555;
+    --abbr-title-text-color: #e5e5e5;
+    --code-text-color: white;
+    --code-background-color: #515B70;
+    --pre-background-color: #f9f9f9;
+    --pre-code-background-color: transparent;
+    --blockquote-color: #7AC8B6;
+    --blockquote-border-left-color: white;
+    --table-border-color: #6C7986;
+    --table-background-color: #1F1F24;
+    --post-title-color: white;
+    --post-date-color: #92A1B1;
     --pagination-color: #ccc;
     --pagination-item-color: #eee;
     --pagination-link-hover-background-color: #f5f5f5;
