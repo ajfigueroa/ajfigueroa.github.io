@@ -5,13 +5,14 @@ excerpt_separator: <!--break-->
 categories: Blog
 ---
 
-Closures in Swift are a great feature and are useful for tasks such as: network callbacks, notification subscribing, and providing an alternative to the delegate pattern.
+Closures in Swift are a great feature and are useful for tasks such as network callbacks, notification subscription, and providing an alternative to the delegate pattern.
 
 Recently, I discovered that code as inconspicuous as a `&&` (and) conditional could also leverage this feature.
 
 <!--break-->
 
 Let's assume that we are modelling a `User` of a global subscription-based application where users can customize their theme color.
+
 We could represent this in Swift as a struct that has properties for its: identifier, subscription status, country code, and theme color.
 The resulting `User` model could look like this:
 ```swift
@@ -25,7 +26,7 @@ struct User {
 
 We'll make the `themeColor` optional here since it'll be up to the User if they want to customize this.
 
-Assume that our application already had an object to represent a theme unsurprisingly called `Theme`:
+Assume that our application already had an object to represent a theme called `Theme`:
 
 ```swift
 class Theme {
@@ -40,37 +41,31 @@ class Theme {
 Observe that this `init` will fallback to `UIColor.white` (or `.white`) if the `backgroundColor` property is **not** provided.
 
 Given this knowledge, we could create a new class just for the custom User theme.
-The custom theme would need to be initialized with a User so that we could grab its `themeColor`. This would then get passed to the parent class as its `backgroundColor`.
+We can initialize the custom theme with a User in order to grab its `themeColor`. The theme color passes to its parent class as its `backgroundColor`.
 
-The custom User theme object could be represented below as a `Theme` subclass:
+A `Theme` subclass can represent the custom User theme object:
 ```swift
 class UserTheme: Theme {
     let user: User
 
     init(user: User) {
         self.user = user
-        super.init(themeUser.themeColor)
+        super.init(backgroundColor: user.themeColor)
     }
 }
 ```
 
-However, what if we learn that custom User theming is a feature that should only be available to subscription Users. Additionally, it should only be limited to Canadian users.
+Let's assume that we have received additional requirements that limit User theming to:
+- subscription users
+- Canadian users
 
-We could then update our `UserTheme` class to handle these cases as follows:
+We could then update our `init` method on `UserTheme` to handle these cases as follows:
 ```swift
-class UserTheme: Theme {
-    let user: User
-
-    init(user: User) {
-        self.user = user
-        var themeColor: UIColor?
-        if self.user.isSubscribed && self.user.countryCode == "CA" {
-            themeColor = self.user.themeColor
-        }
-
-        super.init(backgroundColor: themeColor)
-    }
+var themeColor: UIColor?
+if self.user.isSubscribed && self.user.countryCode == "CA" {
+    themeColor = self.user.themeColor
 }
+super.init(backgroundColor: themeColor)
 ```
 
 Although this looks alright, it'll actually fail to compile. You'll see the following error log in Xcode:
@@ -86,9 +81,9 @@ We could easily fix by removing the explicit `self` and instead rely on the `use
 
 After posting this error message to the [tacow](https://www.meetup.com/tacow-org/) Slack group, [@rydermackay](https://twitter.com/rydermackay) pointed out to me that the Swift language is capturing the right-hand side of the conditional in a closure.
 
-That is, given the conditional: `LHS && RHS` (LHS and RHS represent Left-Hand Side and Right-Hand Side respectively). `RHS` is being wrapped in a closure. More specifically, it is being wrapped in an `autoclosure` so that it could lazily evaluate the right condition if the left condition was false.
+That is, given the conditional: `lhs && rhs` ("lhs" and "rhs" represent Left-Hand Side and Right-Hand Side respectively). `rhs` is being wrapped in a closure. More specifically, it is wrapped in an `autoclosure` so that it could lazily evaluate the right condition if the left condition was false.
 
-This could be verified by looking at the source code for the [&& operator](https://github.com/apple/swift/blob/7f105e4e3a994e6ac87860d5bd7bf9942c52b4bb/stdlib/public/core/Bool.swift#L289):
+This can be shown by looking at the source code for the [&& operator](https://github.com/apple/swift/blob/7f105e4e3a994e6ac87860d5bd7bf9942c52b4bb/stdlib/public/core/Bool.swift#L289):
 ```swift
 public static func && (lhs: Bool, rhs: @autoclosure () throws -> Bool) rethrows -> Bool {
     return lhs ? try rhs() : false
@@ -120,28 +115,18 @@ A && { () -> Bool in
 }
 ```
 
-If we update our previous example with the high level interpretation, it would look like this
+If we update our previous `UserTheme` `init` with this re-interpretation, it would look like this
 
 ```swift
-class UserTheme: Theme {
-    let user: User
-
-    init(user: User) {
-        self.user = user
-        var themeColor: UIColor?
-        let result = self.user.isSubscribed && { () -> Bool in
-            return self.user.countryCode == "CA"
-        }
-        if result {
-            themeColor = self.user.themeColor
-        }
-
-        super.init(backgroundColor: themeColor)
-    }
+let result = self.user.isSubscribed && { () -> Bool in
+    return self.user.countryCode == "CA"
+}
+if result {
+    themeColor = self.user.themeColor
 }
 ```
 
-As you can see, the `self.user.countryCode == "CA"` is indeed being captured by a block and since we're doing this before `super.init()` when all members are initialized the compilation fails.
+As you can see, the block captures `self.user.countryCode == "CA"` and since we're doing this before `super.init()` when all members have initialized the compilation fails.
 
 There are a few ways to fix this, we could:
 - move all this offending code to below the `super.init()`
