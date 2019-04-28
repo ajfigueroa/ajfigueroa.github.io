@@ -36,7 +36,4 @@ This photo was also taken on a phone and it was my first time visiting the famou
 
 I've been to New York City a lot of times but this was my first solo trip there. It's very easy to feel lonely in a densely populated city. I wanted to capture how quick a New York minute is.
 
-Most of my photos are on 500px so feel free to follow me there!
-
-Some advice that I received from one of my favourite photographers was simply:
-> "Take the photo that you want to see"
+Most of my photos are on [500px](https://500px.com/{{site.author.five_hundred_username}}) so feel free to follow me there!
