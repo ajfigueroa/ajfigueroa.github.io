@@ -1,6 +1,6 @@
 # Alex Figueroa
 
-The host for my blog website, enjoy!
+The host for my blog [website](https://alexanderfigueroa.com/), enjoy!
 
 ### Setup
 
