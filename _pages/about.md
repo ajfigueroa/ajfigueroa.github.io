@@ -16,5 +16,4 @@ Currently, I work at [Facebook](https://www.facebook.com/). Previously, I've wor
 
 Any opinions made here are completely my own.
 
-Outside of programming, I enjoy reading, playing the guitar, and taking photos.
-Check out my photographs on [500px](https://500px.com/{{site.author.five_hundred_username}}) and feel free to follow me on [Twitter](https://www.twitter.com/{{site.author.twitter_username}}).
+Outside of programming, I enjoy reading, playing the guitar, and taking photos. Feel free to follow me on [Twitter](https://www.twitter.com/{{site.author.twitter_username}}).
