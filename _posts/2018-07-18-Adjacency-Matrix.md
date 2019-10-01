@@ -12,8 +12,7 @@ In the last [post](/blog/2018/01/07/DFSubviews), we explored how a graph can be 
 ## Disclaimer
 
 This post is mainly for me to jot down points about Adjacency Matrices.
-If this is helpful to you in some way, please don't hesitate to reach out.
-I would appreciate the feedback!
+If this is helpful to you in some way, please let me know!
 
 ## What is an Adjacency Matrix?
 
