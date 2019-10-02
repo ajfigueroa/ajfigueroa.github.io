@@ -10,7 +10,7 @@ permalink: /about/
 </p>
 {% endif %}
 
-My name is Alex and I'm an iOS Engineer from Toronto, ON living in the San Francisco Bay Area.
+My name is Alex and I'm an iOS Engineer from Toronto, Canada living in the San Francisco Bay Area.
 
 Currently, I work at [Facebook](https://www.facebook.com/). Previously, I've worked at [Wealthsimple](https://wealthsimple.com), [Wattpad](https://wattpad.com), [Kinetic Commerce](https://kineticcommerce.com), and my own startup [WeBeam](https://www.producthunt.com/posts/webeam).
 
