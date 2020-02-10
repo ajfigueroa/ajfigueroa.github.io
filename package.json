@@ -1,15 +1,17 @@
 {
-  "name": "ajfigueroa.github.io",
+  "name": "gatsby-starter-blog-theme",
   "private": true,
-  "author": "Alex Figueroa",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ajfigueroa/ajfigueroa.github.io"
+  "version": "0.0.1",
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "clean": "gatsby clean"
   },
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-clean-css": "^3.10.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-util": "^3.0.8"
+  "dependencies": {
+    "gatsby": "^2.19.7",
+    "gatsby-theme-blog": "^1.2.35",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   }
 }
