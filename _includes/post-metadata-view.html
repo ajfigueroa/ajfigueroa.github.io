@@ -1,0 +1,19 @@
+<!-- Component to display the date and category if present -->
+<!-- Date Formatting: http://alanwsmith.com/jekyll-liquid-date-formatting-examples -->
+<div class="row">
+  <div class="column">
+    <span class="post-date">
+      {{ include.post.date | date: "%-d %B %Y" }}
+    </span>
+  </div>
+  <div class="column categories-column">
+    {% assign categories = include.post.categories %}
+    {% for category in categories %}
+      <div class="pill-container">
+        <a id="pill" href="/categories">
+          {{category}}
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
