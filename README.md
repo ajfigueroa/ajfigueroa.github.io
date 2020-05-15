@@ -7,5 +7,6 @@ The host for my blog [website](https://alexanderfigueroa.com/), enjoy!
 Once you've cloned the repo you'll need to run the following commands:
 ```
 npm install
-gatsby develop
+bundle install
+gulp
 ```
