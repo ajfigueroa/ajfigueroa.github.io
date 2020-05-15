@@ -34,4 +34,4 @@ gulp.task('watch', () => {
     gulp.watch('_css/*', [minifyCssTask]);
 });
 
-gulp.task('default', [minifyCssTask, jekyllTask, 'watch']);
+gulp.task('default', gulp.series(minifyCssTask, jekyllTask, 'watch'));
