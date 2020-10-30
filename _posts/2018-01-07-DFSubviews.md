@@ -119,7 +119,7 @@ Using this model, there are three things to highlight with the following impleme
 
 {% highlight swift %}
 // 1
-func depthFirstSearch(from vertex: Vertex) {
+func depthFirstSearch(from vertex: Vertex?) {
     // 2
     vertex.visited = true
     // 3
