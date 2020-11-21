@@ -12,7 +12,7 @@ permalink: /about/
 
 My name is Alex and I'm an iOS Engineer from Canada living in Toronto, Canada (again).
 
-Currently, I work at [Facebook](https://www.facebook.com/). Previously, I've worked at [Wealthsimple](https://wealthsimple.com), [Wattpad](https://wattpad.com), [Kinetic Commerce](https://kineticcommerce.com), and my own startup [WeBeam](https://www.producthunt.com/posts/webeam).
+Previously, I've worked at [Facebook](https://www.facebook.com/), [Wealthsimple](https://wealthsimple.com), [Wattpad](https://wattpad.com), [Kinetic Commerce](https://kineticcommerce.com), and my own startup [WeBeam](https://www.producthunt.com/posts/webeam).
 
 Any opinions made here are completely my own.
 
