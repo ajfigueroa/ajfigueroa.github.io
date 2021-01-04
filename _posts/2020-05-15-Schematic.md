@@ -21,7 +21,7 @@ One of my first projects in this space was identifying problem with the teams an
 
 The project I worked on originally called "Breakdown" was [Schematic](https://github.com/Wattpad/Schematic). It was a wrapper over Auto Layout specifically for Wattpad and I had a great time measuring the performance and usefulness of the library. I was able to get adoption for it internally and from what I've last heard, it's still being used today. 
 
-I go into a lot of detail about why I decided to make another Auto Layout wrapper in the [Schematic Wiki](https://github.com/Wattpad/Schematic/wiki/Explanation-for-how-this-framework-came-to-be). It was originally called "Breakdown".
+I go into a lot of detail about why I decided to make another Auto Layout wrapper in the [Schematic Wiki](https://github.com/Wattpad/Schematic/wiki/Explanation-for-how-this-framework-came-to-be).
 
 ## The Future
 
