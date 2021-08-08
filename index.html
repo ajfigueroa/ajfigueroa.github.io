@@ -1,18 +1,48 @@
----
-layout: default
-title: Blog
----
+<!DOCTYPE html>
+<html lang="en-us">
 
-<div class="posts">
-  {% for post in paginator.posts %}
-  <div class="post">
-    <h1 class="post-title">
-      <a href="{{ post.url }}">{{ post.title }}</a>
-    </h1>
-    {% include post-metadata-view.html post=post %}
-    {{ post.excerpt }}
-    <a href="{{ post.url }}">Read More</a>
+<head>
+  <link rel="canonical" href="https://alexanderfigueroa.com/" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    Alex Figueroa &middot; Software Engineer
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./assets/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed">
+
+  <!-- Icons -->
+  <link rel="shortcut icon" href="./assets/img/favicon.ico">
+</head>
+
+<body>
+  <div id="container">
+    <div id="name-header">
+      Alex Figueroa
+    </div>
+    <div id="about-me">
+      <p>I’m a Software Engineer specializing in iOS living in Toronto, Canada (again).</p>
+      <p>I currently work at <a href="https://www.twitter.com">Twitter</a>. Previously, I’ve worked at <a
+          href="https://www.facebook.com/">Facebook</a>, <a href="https://wealthsimple.com">Wealthsimple</a>, and <a
+          href="https://wattpad.com">Wattpad</a> to name a few. </p>
+    </div>
+    <div id="social-footer">
+      <p>
+        <a href="https://www.twitter.com/externconst">Twitter</a> · <a
+          href="https://ca.linkedin.com/in/alexjfigueroa">LinkedIn</a>
+      </p>
+    </div>
   </div>
-  {% endfor %}
-  {% include footer.html %}
-</div>
+
+  <!-- Analytics -->
+  <script data-goatcounter="https://alexfigueroaspersonalwebsite.goatcounter.com/count" async
+    src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

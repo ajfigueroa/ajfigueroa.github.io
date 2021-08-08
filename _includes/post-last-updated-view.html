@@ -1,6 +1,0 @@
-<!-- Component to display the last updated date if present -->
-{% if include.post.modified_date %}
-  <span class="post-date">
-      Last updated on {{ include.post.modified_date | date: "%-d %B %Y" }}
-  </span>
-{% endif %}
