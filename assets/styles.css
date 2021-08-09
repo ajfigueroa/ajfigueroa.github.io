@@ -13,7 +13,7 @@ body {
     padding: 24px;
 }
 
-#name-header {
+#name {
     text-align: start;
     font-size: xx-large;
     font-weight: bold;
@@ -24,7 +24,28 @@ body {
     font-size: larger;
 }
 
-#social-footer {
-    text-align: end;
+#link-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.link-item {
     font-size: medium;
+    margin-left: 12px;
+    margin-bottom: 0px;
+}
+
+@media (max-width: 352px) {    
+    #link-list {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    
+    .link-item {
+        margin-left: 0px;
+        margin-bottom: 12px;
+    }
 }
