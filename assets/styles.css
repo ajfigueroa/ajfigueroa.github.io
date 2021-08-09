@@ -17,17 +17,14 @@ body {
     text-align: start;
     font-size: xx-large;
     font-weight: bold;
-    /* margin: 12px; */
 }
 
 #about-me {
     text-align: start;
     font-size: larger;
-    /* margin: 12px; */
 }
 
 #social-footer {
     text-align: end;
     font-size: medium;
-    /* margin: 12px; */
 }
