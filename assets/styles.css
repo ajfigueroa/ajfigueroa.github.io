@@ -37,6 +37,11 @@ body {
     margin-bottom: 0px;
 }
 
+#posts-container {
+    display: flex;
+    flex-direction: column;
+}
+
 @media (max-width: 352px) {    
     #link-list {
         flex-direction: column;
